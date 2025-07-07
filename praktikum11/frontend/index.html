@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend VueJS Artikel</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Daftar Artikel</h1>
+
+        <button id="btn-tambah" @click="tambah">Tambah Data</button>
+
+        <div class="modal" v-if="showForm">
+            <div class="modal-content">
+                <span class="close" @click="showForm = false">&times;</span>
+                <form id="form-data" @submit.prevent="saveData">
+                    <h3 id="form-title">{{ formTitle }}</h3>
+                    <div>
+                        <input type="hidden" id="id" v-model="formData.id">
+                        <label for="judul">Judul:</label>
+                        <input type="text" name="judul" id="judul" v-model="formData.judul" placeholder="Judul" required>
+                    </div>
+                    <div>
+                        <label for="isi">Isi:</label>
+                        <textarea name="isi" id="isi" rows="10" v-model="formData.isi"></textarea>
+                    </div>
+                    <div>
+                        <label for="status">Status:</label>
+                        <select name="status" id="status" v-model="formData.status">
+                            <option v-for="option in statusOptions" :value="option.value">
+                                {{ option.text }}
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="id_kategori">Kategori:</label>
+                        <select name="id_kategori" id="id_kategori" v-model="formData.id_kategori" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            <option v-for="kategori in kategoriOptions" :value="kategori.id_kategori">
+                                {{ kategori.nama_kategori }}
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="gambar">Gambar:</label>
+                        <input type="file" name="gambar" id="gambar" @change="handleFileUpload">
+                        <div v-if="formData.current_gambar" style="margin-top: 10px;">
+                            Gambar saat ini: {{ formData.current_gambar }}
+                            <br>
+                            <label>
+                                <input type="checkbox" v-model="formData.hapus_gambar"> Hapus gambar saat ini
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" id="btnSimpan">Simpan</button>
+                    <button type="button" @click="showForm = false">Batal</button>
+                </form>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Judul</th>
+                    <th>Status</th>
+                    <th>Kategori</th>
+                    <th>Gambar</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-if="artikel.length === 0">
+                    <td colspan="6" class="center-text">Loading data atau tidak ada data.</td>
+                </tr>
+                <tr v-for="(row, index) in artikel" :key="row.id">
+                    <td class="center-text">{{ row.id }}</td>
+                    <td>{{ row.judul }}</td>
+                    <td>{{ statusText(row.status) }}</td>
+                    <td>{{ row.nama_kategori || 'N/A' }}</td>
+                    <td>
+                        <img v-if="row.gambar" :src="'http://localhost/tugas_php_polosan_ajax/gambar/' + row.gambar" alt="Gambar Artikel" style="width: 50px; height: 50px; object-fit: cover;">
+                        <span v-else>N/A</span>
+                    </td>
+                    <td class="center-text">
+                        <a href="#" @click.prevent="edit(row)">Edit</a>
+                        <a href="#" @click.prevent="hapus(index, row.id)">Hapus</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

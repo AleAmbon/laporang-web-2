@@ -1,0 +1,401 @@
+/* style.css */
+
+/* General Body and Container Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px; /* Lebar maksimum container */
+    margin: 30px auto; /* Margin atas/bawah 30px, auto untuk tengah */
+    background: #ffffff;
+    padding: 30px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Efek bayangan yang lebih lembut */
+    border-radius: 10px; /* Sudut membulat */
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: #2c3e50; /* Warna biru gelap */
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5em;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 2em;
+    color: #34495e;
+}
+
+/* Forms */
+form p {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95em;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+    width: calc(100% - 22px); /* Mengurangi padding dan border dari lebar total */
+    padding: 10px;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    box-sizing: border-box; /* Agar padding tidak menambah lebar total */
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #3498db; /* Warna border saat fokus */
+    outline: none; /* Hapus outline default browser */
+}
+
+form textarea {
+    resize: vertical; /* Memungkinkan user mengubah tinggi textarea */
+    min-height: 150px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 1em;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    font-weight: 600;
+    margin-top: 10px; /* Spacing for buttons */
+}
+
+.btn-primary { /* Umumnya untuk submit/aksi utama */
+    background-color: #3498db; /* Biru */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-success { /* Untuk aksi tambah/ok */
+    background-color: #2ecc71; /* Hijau */
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+.btn-info { /* Untuk aksi ubah/detail */
+    background-color: #f39c12; /* Oranye */
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+.btn-danger { /* Untuk aksi hapus */
+    background-color: #e74c3c; /* Merah */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary { /* Untuk kembali/batal */
+    background-color: #95a5a6; /* Abu-abu */
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* Specific Styles for Index and Admin Pages */
+
+/* Articles List (Public and Admin) */
+.entry {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.entry h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 1.6em;
+}
+.entry p {
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 0.95em;
+}
+.entry img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.no-data {
+    text-align: center;
+    color: #999;
+    padding: 50px 0;
+    font-size: 1.2em;
+}
+
+/* Admin Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures border-radius applies to table */
+}
+
+th, td {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Table Actions */
+td .btn {
+    padding: 6px 12px;
+    font-size: 0.85em;
+    margin-right: 5px;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #e8f0fe;
+    color: #2980b9;
+}
+
+.pagination .active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+    font-weight: bold;
+}
+
+/* Admin Controls (Search/Filter/Add Button) */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Izinkan wrapping pada layar kecil */
+    gap: 15px; /* Jarak antar item */
+}
+
+.form-inline {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-inline input[type="text"],
+.form-inline select {
+    flex: 1; /* Biarkan item mengisi ruang yang tersedia */
+    min-width: 180px; /* Batas lebar minimum */
+}
+
+/* Error Messages */
+.error-list {
+    color: #c0392b; /* Merah gelap */
+    background-color: #ffe0e0; /* Background merah muda */
+    border: 1px solid #e74c3c;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    list-style-type: none;
+    padding-left: 20px;
+    font-weight: bold;
+}
+.error-list li {
+    margin-bottom: 8px;
+}
+.error-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Detail Article Page */
+.article-meta {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.article-meta span {
+    background-color: #ecf0f1;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+.article-image {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.article-content {
+    font-size: 1.05em;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 20px 25px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .form-inline input, .form-inline select, .form-inline button {
+        width: 100%;
+        margin-right: 0;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid #eee;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+    td:before {
+        position: absolute;
+        top: 0;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #555;
+    }
+    td:nth-of-type(1):before { content: "ID:"; }
+    td:nth-of-type(2):before { content: "Judul:"; }
+    td:nth-of-type(3):before { content: "Kategori:"; }
+    td:nth-of-type(4):before { content: "Status:"; }
+    td:nth-of-type(5):before { content: "Aksi:"; }
+
+    td:last-child {
+        border-bottom: none;
+        padding-bottom: 10px;
+    }
+    td .btn {
+        margin-bottom: 5px;
+        width: calc(100% - 10px); /* Adjust button width for mobile */
+        display: block;
+    }
+    .pagination a, .pagination span {
+        padding: 8px 10px;
+    }
+}
