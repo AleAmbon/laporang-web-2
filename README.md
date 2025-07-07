@@ -13,3 +13,5 @@ DAFTAR ARIKAL
 ![image](https://github.com/user-attachments/assets/8b011b84-abcf-4452-b5f7-ab03170254cd)
 ![image](https://github.com/user-attachments/assets/e23b3359-cd58-46d8-9305-975cc057ab01)
 
+LAPORANG HASIL PARTIKUM 10
+
